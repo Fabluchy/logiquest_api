@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Your Weekly LogiQuest Summary</title>
+  <style>
+    body { font-family: Arial, sans-serif; background: #f4f4f4; margin: 0; padding: 0; }
+    .wrapper { max-width: 600px; margin: 40px auto; background: #ffffff; border-radius: 8px; overflow: hidden; }
+    .header { background: #1a1a2e; padding: 32px; text-align: center; }
+    .header h1 { color: #e0d7ff; margin: 0; font-size: 28px; letter-spacing: 1px; }
+    .header span { color: #9b59b6; }
+    .header p { color: #aaa; margin: 8px 0 0; font-size: 14px; }
+    .body { padding: 32px; color: #333; line-height: 1.6; }
+    .body h2 { color: #1a1a2e; }
+    .stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 24px 0; }
+    .stat-box { background: #f9f6ff; border-radius: 8px; padding: 16px; text-align: center; }
+    .stat-box .value { font-size: 32px; font-weight: bold; color: #9b59b6; }
+    .stat-box .label { font-size: 13px; color: #666; margin-top: 4px; }
+    .leaderboard { width: 100%; border-collapse: collapse; margin: 24px 0; font-size: 14px; }
+    .leaderboard th { background: #1a1a2e; color: #e0d7ff; padding: 10px; text-align: left; }
+    .leaderboard td { padding: 10px; border-bottom: 1px solid #eee; }
+    .leaderboard tr.you { background: #f9f6ff; font-weight: bold; }
+    .cta { text-align: center; margin: 32px 0; }
+    .cta a { background: #9b59b6; color: #fff; text-decoration: none; padding: 14px 32px; border-radius: 6px; font-weight: bold; font-size: 16px; }
+    .footer { background: #f4f4f4; padding: 16px; text-align: center; font-size: 12px; color: #888; }
+    .footer a { color: #9b59b6; }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <div class="header">
+      <h1>Logi<span>Quest</span></h1>
+      <p>Your Weekly Summary — {{weekStart}} to {{weekEnd}}</p>
+    </div>
+    <div class="body">
+      <h2>Nice week, {{username}}! 📊</h2>
+      <p>Here's how you did this week on LogiQuest:</p>
+
+      <div class="stats-grid">
+        <div class="stat-box">
+          <div class="value">{{puzzlesSolved}}</div>
+          <div class="label">Puzzles Solved</div>
+        </div>
+        <div class="stat-box">
+          <div class="value">{{weeklyScore}}</div>
+          <div class="label">Points Earned</div>
+        </div>
+        <div class="stat-box">
+          <div class="value">{{rank}}</div>
+          <div class="label">Global Rank</div>
+        </div>
+        <div class="stat-box">
+          <div class="value">{{achievementsUnlocked}}</div>
+          <div class="label">Achievements</div>
+        </div>
+      </div>
+
+      {{#if topPlayers}}
+      <h3>🏆 Top 5 Players This Week</h3>
+      <table class="leaderboard">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Player</th>
+            <th>Score</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each topPlayers}}
+          <tr {{#if this.isCurrentUser}}class="you"{{/if}}>
+            <td>{{this.rank}}</td>
+            <td>{{this.username}}{{#if this.isCurrentUser}} ← You{{/if}}</td>
+            <td>{{this.score}}</td>
+          </tr>
+          {{/each}}
+        </tbody>
+      </table>
+      {{/if}}
+
+      <div class="cta">
+        <a href="{{appUrl}}">Keep Solving →</a>
+      </div>
+
+      <p>— The LogiQuest Team</p>
+    </div>
+    <div class="footer">
+      You're receiving this weekly digest because you've opted in.<br />
+      <a href="{{unsubscribeUrl}}">Unsubscribe</a> | © {{year}} LogiQuest.
+    </div>
+  </div>
+</body>
+</html>

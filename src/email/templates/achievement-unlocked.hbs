@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Achievement Unlocked – LogiQuest</title>
+  <style>
+    body { font-family: Arial, sans-serif; background: #f4f4f4; margin: 0; padding: 0; }
+    .wrapper { max-width: 600px; margin: 40px auto; background: #ffffff; border-radius: 8px; overflow: hidden; }
+    .header { background: #1a1a2e; padding: 32px; text-align: center; }
+    .header h1 { color: #e0d7ff; margin: 0; font-size: 28px; letter-spacing: 1px; }
+    .header span { color: #9b59b6; }
+    .body { padding: 32px; color: #333; line-height: 1.6; }
+    .body h2 { color: #1a1a2e; }
+    .achievement-card { background: linear-gradient(135deg, #1a1a2e, #16213e); color: #fff; border-radius: 12px; padding: 24px; text-align: center; margin: 24px 0; }
+    .achievement-card .icon { font-size: 56px; }
+    .achievement-card .name { font-size: 22px; font-weight: bold; color: #f1c40f; margin: 8px 0; }
+    .achievement-card .desc { font-size: 14px; color: #aaa; }
+    .cta { text-align: center; margin: 32px 0; }
+    .cta a { background: #9b59b6; color: #fff; text-decoration: none; padding: 14px 32px; border-radius: 6px; font-weight: bold; font-size: 16px; }
+    .footer { background: #f4f4f4; padding: 16px; text-align: center; font-size: 12px; color: #888; }
+    .footer a { color: #9b59b6; }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <div class="header">
+      <h1>Logi<span>Quest</span></h1>
+    </div>
+    <div class="body">
+      <h2>🏆 Achievement Unlocked, {{username}}!</h2>
+      <p>
+        Congratulations! You've just unlocked a new achievement on LogiQuest.
+        Keep up the incredible work!
+      </p>
+
+      <div class="achievement-card">
+        <div class="icon">{{icon}}</div>
+        <div class="name">{{achievementName}}</div>
+        <div class="desc">{{achievementDescription}}</div>
+      </div>
+
+      {{#if nftReward}}
+      <p>
+        🎁 <strong>NFT Reward incoming!</strong> As a bonus for this achievement,
+        an exclusive NFT has been minted to your wallet.
+      </p>
+      {{/if}}
+
+      <div class="cta">
+        <a href="{{appUrl}}/achievements">View All Achievements →</a>
+      </div>
+
+      <p>— The LogiQuest Team</p>
+    </div>
+    <div class="footer">
+      You're receiving this because you've opted in to achievement notifications.<br />
+      <a href="{{unsubscribeUrl}}">Unsubscribe</a> | © {{year}} LogiQuest.
+    </div>
+  </div>
+</body>
+</html>
