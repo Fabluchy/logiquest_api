@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f7;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    .header {
+      background: linear-gradient(135deg, #f5af19 0%, #f12711 100%);
+      color: white;
+      padding: 40px 20px;
+      text-align: center;
+      border-radius: 12px 12px 0 0;
+    }
+    .header h1 {
+      margin: 0;
+      font-size: 28px;
+      font-weight: 700;
+    }
+    .badge {
+      font-size: 64px;
+      margin-bottom: 10px;
+    }
+    .content {
+      background: white;
+      padding: 40px 30px;
+      border-radius: 0 0 12px 12px;
+    }
+    .content h2 {
+      color: #333;
+      margin-top: 0;
+    }
+    .content p {
+      color: #555;
+      line-height: 1.6;
+      font-size: 15px;
+    }
+    .achievement-card {
+      background: #fef9e7;
+      border: 2px solid #f5af19;
+      border-radius: 12px;
+      padding: 24px;
+      text-align: center;
+      margin: 20px 0;
+    }
+    .achievement-card .name {
+      font-size: 22px;
+      font-weight: 700;
+      color: #333;
+    }
+    .achievement-card .desc {
+      color: #666;
+      margin-top: 8px;
+    }
+    .achievement-card .rarity {
+      display: inline-block;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      margin-top: 12px;
+      background: #f5af19;
+      color: white;
+    }
+    .cta-button {
+      display: inline-block;
+      padding: 14px 28px;
+      background: linear-gradient(135deg, #f5af19 0%, #f12711 100%);
+      color: white;
+      text-decoration: none;
+      border-radius: 6px;
+      font-weight: 600;
+      margin: 20px 0;
+    }
+    .footer {
+      text-align: center;
+      padding: 20px;
+      color: #999;
+      font-size: 12px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <p class="badge">🏅</p>
+      <h1>Achievement Unlocked!</h1>
+      <p>Congratulations on your latest milestone</p>
+    </div>
+    <div class="content">
+      <h2>Great work, <%- username %>!</h2>
+      <p>You've unlocked a new achievement on LogiQuest. Keep up the amazing work!</p>
+      <div class="achievement-card">
+        <p class="name"><%- achievementName %></p>
+        <p class="desc"><%- achievementDescription %></p>
+        <p class="rarity"><%- rarity %></p>
+      </div>
+      <p style="text-align: center;">
+        <a href="<%- appUrl %>/achievements" class="cta-button">View All Achievements</a>
+      </p>
+      <p>The LogiQuest Team</p>
+    </div>
+    <div class="footer">
+      <p>&copy; 2026 LogiQuest. All rights reserved.</p>
+      <p>
+        You're receiving this because you unlocked an achievement.
+        <a href="<%- appUrl %>/settings/email-preferences">Manage preferences</a>
+      </p>
+    </div>
+  </div>
+</body>
+</html>

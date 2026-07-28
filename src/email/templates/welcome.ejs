@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f7;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    .header {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 40px 20px;
+      text-align: center;
+      border-radius: 12px 12px 0 0;
+    }
+    .header h1 {
+      margin: 0;
+      font-size: 28px;
+      font-weight: 700;
+    }
+    .header p {
+      margin: 10px 0 0;
+      opacity: 0.9;
+      font-size: 16px;
+    }
+    .content {
+      background: white;
+      padding: 40px 30px;
+      border-radius: 0 0 12px 12px;
+    }
+    .content h2 {
+      color: #333;
+      margin-top: 0;
+    }
+    .content p {
+      color: #555;
+      line-height: 1.6;
+      font-size: 15px;
+    }
+    .cta-button {
+      display: inline-block;
+      padding: 14px 28px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      text-decoration: none;
+      border-radius: 6px;
+      font-weight: 600;
+      margin: 20px 0;
+    }
+    .footer {
+      text-align: center;
+      padding: 20px;
+      color: #999;
+      font-size: 12px;
+    }
+    .logo {
+      font-size: 36px;
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <p class="logo">🧩</p>
+      <h1>Welcome to LogiQuest!</h1>
+      <p>Your puzzle adventure begins now</p>
+    </div>
+    <div class="content">
+      <h2>Hey <%- username %>!</h2>
+      <p>
+        Welcome aboard! You've just joined LogiQuest, the ultimate platform for
+        logic puzzle enthusiasts. Get ready to challenge your mind, earn rewards,
+        and climb the leaderboard.
+      </p>
+      <p>
+        Here's what you can do to get started:
+      </p>
+      <ul>
+        <li>🧠 Solve your first puzzle</li>
+        <li>🏆 Unlock achievements and earn badges</li>
+        <li>📊 Track your progress on the leaderboard</li>
+        <li>🎁 Earn rewards for your accomplishments</li>
+      </ul>
+      <p style="text-align: center;">
+        <a href="<%- appUrl %>" class="cta-button">Start Solving Puzzles</a>
+      </p>
+      <p>
+        If you have any questions, feel free to reach out to our support team.
+        Happy puzzling!
+      </p>
+      <p>The LogiQuest Team</p>
+    </div>
+    <div class="footer">
+      <p>&copy; 2026 LogiQuest. All rights reserved.</p>
+      <p>
+        You received this email because you created an account on LogiQuest.
+      </p>
+    </div>
+  </div>
+</body>
+</html>

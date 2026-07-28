@@ -12,6 +12,7 @@ import { HealthModule } from './health/health.module';
 import { LoggingMiddleware } from './common/middleware/logging.middleware';
 import { CategoriesModule } from './categories/categories.module';
 import { PuzzlesModule } from './puzzles/puzzles.module';
+import { EmailModule } from './email/email.module';
 
 @Module({
   imports: [
@@ -29,6 +30,7 @@ import { PuzzlesModule } from './puzzles/puzzles.module';
     HealthModule,
     CategoriesModule,
     PuzzlesModule,
+    EmailModule,
   ],
   providers: [EventService],
 })

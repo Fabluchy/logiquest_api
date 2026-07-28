@@ -3,6 +3,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { JwtService } from '@nestjs/jwt';
 import { ConfigService } from '@nestjs/config';
+import { EventEmitter2 } from '@nestjs/event-emitter';
 import * as bcrypt from 'bcrypt';
 import { User } from './entities/user.entity';
 import { RegisterDto } from './dto/register.dto';
@@ -15,6 +16,7 @@ export class AuthService {
     private userRepository: Repository<User>,
     private jwtService: JwtService,
     private configService: ConfigService,
+    private eventEmitter: EventEmitter2,
   ) {}
 
   async register(registerDto: RegisterDto) {
@@ -40,6 +42,13 @@ export class AuthService {
     });
 
     await this.userRepository.save(user);
+
+    // Emit event for welcome email
+    this.eventEmitter.emit('user.registered', {
+      userId: user.id,
+      email: user.email,
+      username: user.username,
+    });
 
     // Return user without password
     const { password: _, ...userWithoutPassword } = user;

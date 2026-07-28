@@ -12,10 +12,6 @@ export class User {
   @Column({ unique: true })
   email!: string;
 
-  // Keep both temporarily if both branches are already using them
-  @Column()
-  passwordHash!: string;
-
   @Column()
   passwordHash!: string;
 
@@ -30,5 +26,4 @@ export class User {
 
   @UpdateDateColumn()
   updatedAt!: Date;
-}
 }

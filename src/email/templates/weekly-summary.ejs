@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f7;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    .header {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 40px 20px;
+      text-align: center;
+      border-radius: 12px 12px 0 0;
+    }
+    .header h1 {
+      margin: 0;
+      font-size: 28px;
+      font-weight: 700;
+    }
+    .header p {
+      margin: 8px 0 0;
+      opacity: 0.9;
+    }
+    .content {
+      background: white;
+      padding: 40px 30px;
+      border-radius: 0 0 12px 12px;
+    }
+    .content h2 {
+      color: #333;
+      margin-top: 0;
+    }
+    .stats-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin: 24px 0;
+    }
+    .stat-card {
+      background: #f8f9fa;
+      border-radius: 10px;
+      padding: 20px;
+      text-align: center;
+    }
+    .stat-card .stat-value {
+      font-size: 32px;
+      font-weight: 700;
+      color: #667eea;
+    }
+    .stat-card .stat-label {
+      font-size: 13px;
+      color: #888;
+      margin-top: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .section-title {
+      font-size: 18px;
+      font-weight: 600;
+      color: #333;
+      margin: 24px 0 12px;
+      border-bottom: 2px solid #f0f0f0;
+      padding-bottom: 8px;
+    }
+    .achievement-list {
+      list-style: none;
+      padding: 0;
+    }
+    .achievement-list li {
+      padding: 8px 0;
+      color: #555;
+      border-bottom: 1px solid #f0f0f0;
+    }
+    .achievement-list li:last-child {
+      border-bottom: none;
+    }
+    .cta-button {
+      display: inline-block;
+      padding: 14px 28px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      text-decoration: none;
+      border-radius: 6px;
+      font-weight: 600;
+      margin: 20px 0;
+    }
+    .footer {
+      text-align: center;
+      padding: 20px;
+      color: #999;
+      font-size: 12px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>📊 Weekly Summary</h1>
+      <p>Your LogiQuest activity for the past week</p>
+    </div>
+    <div class="content">
+      <h2>Hey <%- username %>!</h2>
+      <p>Here's a recap of your LogiQuest activity from the past week.</p>
+
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-value"><%- puzzlesSolved %></div>
+          <div class="stat-label">Puzzles Solved</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value"><%- achievementsUnlocked %></div>
+          <div class="stat-label">Achievements</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value"><%- scoreGained %></div>
+          <div class="stat-label">Score Gained</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value">#<%- leaderboardRank %></div>
+          <div class="stat-label">Leaderboard Rank</div>
+        </div>
+      </div>
+
+      <% if (newAchievements && newAchievements.length > 0) { %>
+        <div class="section-title">🏅 New Achievements</div>
+        <ul class="achievement-list">
+          <% newAchievements.forEach(function(ach) { %>
+            <li>🏆 <strong><%- ach.name %></strong> — <%- ach.description %></li>
+          <% }); %>
+        </ul>
+      <% } %>
+
+      <p style="text-align: center;">
+        <a href="<%- appUrl %>" class="cta-button">See Full Dashboard</a>
+      </p>
+      <p>Keep up the great work, puzzler!</p>
+      <p>The LogiQuest Team</p>
+    </div>
+    <div class="footer">
+      <p>&copy; 2026 LogiQuest. All rights reserved.</p>
+      <p>
+        You're receiving this weekly summary because you opted in.
+        <a href="<%- appUrl %>/settings/email-preferences">Unsubscribe</a>
+      </p>
+    </div>
+  </div>
+</body>
+</html>

@@ -4,10 +4,15 @@ import { UpdateUserDto } from './dto/update-user.dto';
 import { UserDto } from './dto/user.dto';
 import { AuthGuard } from '../auth/guards/auth.guard';
 import { RolesGuard } from '../auth/guards/roles.guard';
+import { EmailService } from '../email/email.service';
+import { UpdateEmailPreferencesDto } from '../email/dto/update-email-preferences.dto';
 
 @Controller('users')
 export class UsersController {
-  constructor(private readonly service: UsersService) {}
+  constructor(
+    private readonly service: UsersService,
+    private readonly emailService: EmailService,
+  ) {}
 
   @Get(':id')
   async getProfile(@Param('id') id: string): Promise<UserDto> {
@@ -28,5 +33,15 @@ export class UsersController {
   @UseGuards(AuthGuard, RolesGuard)
   async deleteUser(@Param('id') id: string, @Request() req): Promise<void> {
     await this.service.remove(id, req.user.role);
+  }
+
+  @Patch('me/email-preferences')
+  @UseGuards(AuthGuard)
+  async updateEmailPreferences(
+    @Body() dto: UpdateEmailPreferencesDto,
+    @Request() req,
+  ): Promise<{ optOutNonCritical: boolean }> {
+    const pref = await this.emailService.updatePreferences(req.user.id, dto);
+    return { optOutNonCritical: pref.optOutNonCritical };
   }
 }
